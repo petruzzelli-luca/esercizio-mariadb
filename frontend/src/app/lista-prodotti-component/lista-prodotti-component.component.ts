@@ -2,6 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProdottoService } from '../prodotto-service.service';
 import { Prodotto } from '../models/prodottomodel';
+import { CartService } from '../cart-service.service';
+
 
 @Component({
   selector: 'app-lista-prodotti-component',
@@ -12,6 +14,7 @@ import { Prodotto } from '../models/prodottomodel';
 })
 export class ListaProdottiComponentComponent implements OnInit {
   private prodottoService = inject(ProdottoService);
+  private cartService = inject(CartService);
 
   prodotti: Prodotto[] = [];
   loading = true; 
@@ -28,4 +31,10 @@ export class ListaProdottiComponentComponent implements OnInit {
       }
     });
   }
+
+  aggiungiAlCarrello(p: Prodotto): void {
+    this.cartService.addToCart(p);
+  }
+
+
 }

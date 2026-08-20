@@ -1,18 +1,20 @@
 <h2>Catalogo Prodotti</h2>
+<a routerLink="/carrello">🛒 Vai al Carrello</a>
 
 @if (loading) {
-  <div style="font-style: italic; color: gray;">
-    Caricamento prodotti in corso...
-  </div>
+  <p> Caricamento prodotti in corso...</p>
 } @else {
   <ul>
     @for (p of prodotti; track p.id) {
       <li>
-        <strong>{{ p.nome }}</strong> - Prezzo Netto: €{{ p.prezzo }} | 
-        <strong>Prezzo Ivato: €{{ p.prezzo_ivato }}</strong>
+        <strong>{{ p.nome }}</strong> - {{ p.prezzo_ivato }} €
+        | 
+        <!-- Bottone Vedi Dettaglio con routerLink -->
+        <a [routerLink]="['/prodotto', p.id]">Vedi Dettaglio</a>
+        | 
+        <!-- Bottone Aggiungi al Carrello -->
+        <button (click)="aggiungiAlCarrello(p)">Aggiungi al Carrello</button>
       </li>
-    } @empty {
-      <li>Nessun prodotto presente a catalogo.</li>
     }
   </ul>
 }
