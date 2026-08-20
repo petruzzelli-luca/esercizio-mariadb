@@ -18,11 +18,11 @@ export class ListaProdottiComponentComponent implements OnInit {
 
   ngOnInit(): void {
     this.prodottoService.getProdotti().subscribe({
-      next: (data) => {
+      next: (data: Prodotto[]) => {
         this.prodotti = data;
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Errore durante il recupero dei dati:', err);
         this.loading = false;
       }
