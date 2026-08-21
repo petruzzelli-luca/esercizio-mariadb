@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ProdottoService } from '../prodotto-service.service';
 import { Prodotto } from '../models/prodottomodel';
 import { CartService } from '../cart-service.service';
-
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-lista-prodotti-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './lista-prodotti-component.component.html',
   styleUrl: './lista-prodotti-component.component.css'
 })
